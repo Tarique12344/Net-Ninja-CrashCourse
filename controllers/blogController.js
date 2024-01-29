@@ -1,4 +1,4 @@
-const Blog = require('../../node-crash-course-hw/node_modules/models/blog');
+const Blog = require('../models/blog');
 
 const blog_index = (req, res) => {
   Blog.find().sort({ createdAt: -1 })
@@ -18,6 +18,7 @@ const blog_details = (req, res) => {
     })
     .catch(err => {
       console.log(err);
+      res.render('404', { title: 'Blog not found' });
     });
 }
 
